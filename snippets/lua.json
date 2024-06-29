@@ -1,0 +1,9 @@
+{
+  "CurrentDate": {
+    "prefix": "cdd",
+    "body": [
+      "-- $USER ${VIM}:system('date')"
+    ],
+    "description": "set current date and username"
+  }
+}

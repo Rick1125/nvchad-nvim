@@ -40,10 +40,4 @@ vim.g.vscode_snippets_path = "~/.config/nvim/snippets"
 -- lua format
 -- vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/custom/lua_snippets"
 
--- for openai
--- vim.g.nvim_ai_llm = "openai"
--- vim.g.nvim_ai_apikey = "sk-xnI8LDOvJeMksqPB7bB04c9191294319Ae3e9dD87e19074f"
--- vim.g.nvim_ai_model = "gpt-4o"
--- vim.g.nvim_ai_custom_api = "https://one.onerise.tech"
---
 -- vim.g.codeium_enabled = false
