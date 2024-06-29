@@ -33,8 +33,10 @@ M.mason = {
 
     -- web dev stuff
     "css-lsp",
+    "biome",
     "html-lsp",
     "typescript-language-server",
+    "js-debug-adapter",
     "emmet-language-server",
     "prettier",
     "php",
@@ -45,6 +47,7 @@ M.mason = {
 
     -- machine learning
     "python",
+    "ruff-lsp",
   },
 }
 
@@ -74,10 +77,14 @@ M.cmp = {
     { name = "buffer" },
     { name = "path" },
   },
+  experimental = {
+    ghost_text = {
+      hl_group = "LspCodeLens",
+    },
+  },
   formatting = {
     format = require("lspkind").cmp_format {
       mode = "symbol_text",
-      maxwidth = 50,
       ellipsis_char = "...",
       symbol_map = { Codeium = "" },
     },

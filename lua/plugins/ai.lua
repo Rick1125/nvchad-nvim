@@ -36,6 +36,22 @@ local plugins = {
     end,
     event = "BufEnter",
   },
+
+  {
+    "David-Kunz/gen.nvim",
+    keys = {
+      { "<leader>gg", "<cmd>Gen Generate<cr>", mode = "n", { nowait = true } },
+      { "<leader>ga", "<cmd>Gen Ask<cr>",      mode = "n", { nowait = true } },
+    },
+    config = function()
+      require("gen").setup {
+        display_mode = "split",
+        show_prompt = true,
+        no_auto_close = true,
+      }
+    end,
+    event = "BufEnter",
+  },
 }
 
 return plugins

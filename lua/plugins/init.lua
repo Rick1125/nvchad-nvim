@@ -54,9 +54,15 @@ return {
   },
 
   -- nice, noise, notice plugin
+  -- https://github.com/folke/noice.nvim
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    keys = {
+      { "<leader>nl", "<cmd>Noice last<cr>",   desc = "Noice last" },
+      { "<leader>nd", "<cmd>NoiceDisable<cr>", desc = "Disable Noice" },
+      { "<leader>ne", "<cmd>NoiceEnable<cr>",  desc = "Enable Noice" },
+    },
     opts = {
       -- add any options here
       lsp = {
@@ -65,6 +71,12 @@ return {
         },
         signature = {
           enabled = false,
+        },
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
       },
       presets = {
