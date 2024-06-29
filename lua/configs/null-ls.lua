@@ -13,9 +13,9 @@ local sources = {
 
   -- webdev stuff
   -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "go", "svelte", "python" } }, -- so prettier works only on these filetypes
-
+  -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "go", "svelte", "python" } }, -- so prettier works only on these filetypes
   b.formatting.prettier,
+  b.code_actions.gitsigns,
 
   -- Lua
   b.formatting.stylua,
@@ -27,6 +27,10 @@ local sources = {
   b.formatting.gofumpt,
   b.formatting.goimports_reviser,
   b.formatting.golines,
+  b.code_actions.gomodifytags,
+
+  require "none-ls.formatting.jq",
+  require "none-ls.diagnostics.eslint",
 }
 
 local on_attach = function(client, bufnr)

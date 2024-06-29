@@ -8,7 +8,9 @@ local plugins = {
       {
         -- "jose-elias-alvarez/null-ls.nvim",
         "nvimtools/none-ls.nvim",
-        ft = "go",
+        dependencies = {
+          "nvimtools/none-ls-extras.nvim",
+        },
         config = function()
           require "configs.null-ls"
         end,
