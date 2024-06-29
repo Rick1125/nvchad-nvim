@@ -41,3 +41,4 @@ vim.g.vscode_snippets_path = "~/.config/nvim/snippets"
 -- vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/custom/lua_snippets"
 
 -- vim.g.codeium_enabled = false
+-- vim.g.codeium_no_map_tab = true

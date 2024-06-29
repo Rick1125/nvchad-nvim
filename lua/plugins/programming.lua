@@ -82,6 +82,28 @@ local plugins = {
     end,
     event = "BufEnter",
   },
+
+  -- code completion
+  {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
+  },
+
+  -- html emmet --
+  {
+    "olrtg/nvim-emmet",
+    keys = {
+      {
+        "<leader>xe",
+        function()
+          require("nvim-emmet").wrap_with_abbreviation()
+        end,
+        desc = "Emmet",
+        mode = { "n", "v" },
+      },
+    },
+    event = "BufEnter",
+  },
 }
 
 return plugins

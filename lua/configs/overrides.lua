@@ -35,6 +35,7 @@ M.mason = {
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
+    "emmet-language-server",
     "prettier",
     "php",
     "svelte",
@@ -61,6 +62,24 @@ M.nvimtree = {
       show = {
         git = true,
       },
+    },
+  },
+}
+
+M.cmp = {
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "codeium" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "path" },
+  },
+  formatting = {
+    format = require("lspkind").cmp_format {
+      mode = "symbol_text",
+      maxwidth = 50,
+      ellipsis_char = "...",
+      symbol_map = { Codeium = "" },
     },
   },
 }
