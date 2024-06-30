@@ -47,6 +47,7 @@ local plugins = {
       require("gen").setup {
         display_mode = "split",
         show_prompt = true,
+        model = "gemma2",
         no_auto_close = true,
       }
     end,

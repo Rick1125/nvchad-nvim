@@ -6,6 +6,14 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local servers = { "html", "cssls", "svelte", "ruff_lsp", "gopls" }
 
+local function organize_imports()
+  local params = {
+    command = "_typescript.organize_imports",
+    arguments = { vim.api.nvim_buf_get_name(0) },
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -23,6 +31,9 @@ lspconfig.tsserver.setup {
     preferences = {
       disableSuggestions = true,
     },
+  },
+  commands = {
+    OrganizeImports = { organize_imports, description = "Organize Imports" },
   },
 }
 

@@ -1,11 +1,12 @@
 require "nvchad.mappings"
+local wk = require "which-key"
 
 -- add yours here
 
 local map = vim.keymap.set
 
 -- general
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map({ "n", "v" }, ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 map("n", "<C-c>", "<ESC>", { desc = "escape input", nowait = true })
@@ -33,41 +34,52 @@ map("n", "<leader><leader>f", "<cmd>HopChar1<CR>", { desc = "Hop to char1", nowa
 map("n", "<leader><leader>F", "<cmd>HopChar2<CR>", { desc = "Hop to char2", nowait = true })
 
 -- dap
-map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Toggle breakpoint at line", nowait = true })
-map("n", "<leader>dc", "<cmd>DapContinue<CR>", { desc = "Continue", nowait = true })
-map("n", "<leader>di", "<cmd>DapStepInto<CR>", { desc = "Step into", nowait = true })
-map("n", "<leader>do", "<cmd>DapStepOver<CR>", { desc = "Step over", nowait = true })
-map("n", "<leader>dO", "<cmd>DapStepOut<CR>", { desc = "Step out", nowait = true })
-map("n", "<leader>dS", "<cmd>DapRunToCursor<CR>", { desc = "Run to cursor", nowait = true })
-map("n", "<leader>dt", "<cmd>DapTerminate<CR>", { desc = "Terminate", nowait = true })
-map("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", { desc = "Toggle UI", nowait = true })
-map("n", "<leader>dus", function()
-  local widgets = require "dap.ui.widgets"
-  local sidebar = widgets.sidebar(widgets.scopes)
-  sidebar.open()
-end, { desc = "Open sidebar", nowait = true })
-map("n", "<leader>dgt", function()
-  require("dap-go").debug_test()
-end, { desc = "Debug test", nowait = true })
-map("n", "<leader>dgl", function()
-  require("dap-go").debug_last()
-end, { desc = "Debug last go test", nowait = true })
-
--- gopher
--- map("n", "<leader>tj", "<cmd>GoTagAdd json<cr>", { desc = "Gopher add json tag to structure", nowait = true })
--- map("n", "<leader>ty", "<cmd>GoTagAdd yaml<cr>", { desc = "Gopher add yaml tag to structure", nowait = true })
+wk.register({
+  d = {
+    name = "DAP",
+    b = { "<cmd>DapToggleBreakpoint<CR>", "Toggle breakpoint at line" },
+    c = { "<cmd>DapContinue", "Continue" },
+    i = { "<cmd>DapStepInto<CR>", "Step into" },
+    o = { "<cmd>DapStepOver<CR>", "Step over" },
+    O = { "<cmd>DapStepOut<CR>", "Step out" },
+    S = { "<cmd>DapRunToCursor<CR>", "Run to cursor" },
+    t = { "<cmd>DapTerminate<CR>", "Terminate" },
+    u = { "<cmd>lua require'dapui'.toggle()<CR>", "Toggle UI" },
+    us = {
+      function()
+        local widgets = require "dap.ui.widgets"
+        local sidebar = widgets.sidebar(widgets.scopes)
+        sidebar.open()
+      end,
+      "Open sidebar",
+    },
+    gt = {
+      function()
+        require("dap-go").debug_test()
+      end,
+      "Debug test",
+    },
+    gl = {
+      function()
+        require("dap-go").debug_last()
+      end,
+      "Debug last go test",
+    },
+  },
+}, { prefix = "<leader>" })
 
 -- ai
-map("n", "<leader>ai", "<cmd>ChatGPT<cr>", { desc = "ChatGPT", nowait = true })
-map("n", "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "Edit with instructions", nowait = true })
-map("n", "<leader>at", "<cmd>ChatGPTRun translate<cr>", { desc = "Translate", nowait = true })
-map(
-  "n",
-  "<leader>cl",
-  "<cmd>ChatGPTRun code_readability_analysis<cr>",
-  { desc = "Code Readability Analysis", nowait = true }
-)
-map("n", "<leader>cx", "<cmd>ChatGPTRun explain_code<cr>", { desc = "Explain code", nowait = true })
+wk.register({
+  c = {
+    name = "AI",
+    i = { "<cmd>ChatGPT<cr>", "ChatGPT" },
+    l = { "<cmd>ChatGPTActAs<cr>", "ChatGPT Act as" },
+    c = { "<cmd>ChatGPTRun optimize_code<cr>", "Optimize code" },
+    o = { "<cmd>ChatGPTRun translate<cr>", "Translate" },
+    t = { "<cmd>ChatGPTRun code_readability_analysis<cr>", "Code Readability Analysis" },
+    x = { "<cmd>ChatGPTRun explain_code<cr>", "Explain code" },
+  },
+}, { prefix = "<leader>" })
 
 -- neorg
 -- map("n", "<leader>ng", "<cmd>Neorg<cr>", { desc = "Norg note", nowait = true })
