@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "svelte", "ruff_lsp", "gopls" }
+local servers = { "html", "lua_ls", "biome", "cssls", "unocss", "svelte", "ruff_lsp", "gopls" }
 
 local function organize_imports()
   local params = {
@@ -52,6 +52,5 @@ lspconfig.emmet_language_server.setup {
     "javascriptreact",
     "javascript.jsx",
     "vue",
-    "svelte",
   },
 }

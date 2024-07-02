@@ -15,7 +15,6 @@ local sources = {
   -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "go", "svelte", "python" } }, -- so prettier works only on these filetypes
   b.formatting.prettier,
   b.formatting.biome,
-  b.code_actions.gitsigns,
 
   b.diagnostics.fish,
   b.diagnostics.phpstan,

@@ -1,6 +1,17 @@
 ---@type NvPluginSpec[]
 return {
   {
+    "mireq/luasnip-snippets",
+    dependencies = { "L3MON4D3/LuaSnip" },
+    init = function()
+      -- Mandatory setup function
+      require("luasnip_snippets.common.snip_utils").setup()
+    end,
+  },
+
+  { "saadparwaiz1/cmp_luasnip" },
+
+  {
     "NvChad/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup()
@@ -59,9 +70,9 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>nl", "<cmd>Noice last<cr>",   desc = "Noice last" },
+      { "<leader>nl", "<cmd>Noice last<cr>", desc = "Noice last" },
       { "<leader>nd", "<cmd>NoiceDisable<cr>", desc = "Disable Noice" },
-      { "<leader>ne", "<cmd>NoiceEnable<cr>",  desc = "Enable Noice" },
+      { "<leader>ne", "<cmd>NoiceEnable<cr>", desc = "Enable Noice" },
     },
     opts = {
       -- add any options here
@@ -82,7 +93,7 @@ return {
       presets = {
         long_message_to_split = true, -- long messages will be sent to a split
         -- inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false,       -- add a border to hover docs and signature help
+        lsp_doc_border = false, -- add a border to hover docs and signature help
       },
     },
     dependencies = {

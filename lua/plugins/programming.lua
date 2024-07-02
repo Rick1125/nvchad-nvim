@@ -26,6 +26,36 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = overrides.mason,
   },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup {
+        ensure_installed = {
+          "html",
+          "lua_ls",
+          "cssls",
+          "biome",
+          "unocss",
+          "svelte",
+          "ruff_lsp",
+          "gopls",
+        },
+      }
+    end,
+  },
+
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    ft = { "c", "cpp", "lua", "php", "py", "js", "svelte", "rust", "go" },
+    config = function()
+      require("lspsaga").setup {}
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",

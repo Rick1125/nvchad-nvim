@@ -70,6 +70,11 @@ M.nvimtree = {
 }
 
 M.cmp = {
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
   sources = {
     { name = "nvim_lsp" },
     { name = "codeium" },
@@ -89,6 +94,15 @@ M.cmp = {
       symbol_map = { Codeium = "" },
     },
   },
+}
+
+M.luasnip = {
+  load_ft_func = require("luasnip_snippets.common.snip_utils").load_ft_func,
+  ft_func = require("luasnip_snippets.common.snip_utils").ft_func,
+  -- To enable auto expansin
+  enable_autosnippets = true,
+  -- Uncomment to enable visual snippets triggered using <c-x>
+  -- store_selection_keys = '<c-x>'
 }
 
 return M

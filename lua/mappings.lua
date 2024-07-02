@@ -33,6 +33,21 @@ map("n", "<leader><leader>w", "<cmd>HopWord<CR>", { desc = "Hop to word", nowait
 map("n", "<leader><leader>f", "<cmd>HopChar1<CR>", { desc = "Hop to char1", nowait = true })
 map("n", "<leader><leader>F", "<cmd>HopChar2<CR>", { desc = "Hop to char2", nowait = true })
 
+-- lspsaga
+wk.register({
+  s = {
+    name = "LspSaga",
+    a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
+    l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics" },
+    g = { "<cmd>Lspsaga goto_definition<cr>", "Goto Definition" },
+    D = { "<cmd>Lspsaga hover_doc<cr>", "Hover Document" },
+    d = { "<cmd>Lspsaga peek_definition<cr>", "Peek Definition" },
+    r = { "<cmd>Lspsaga rename<cr>", "Rename Variable" },
+    n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Diagnostic Jump Next" },
+    p = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Diagnostic Jump Prev" },
+  },
+}, { prefix = "<leader>" })
+
 -- dap
 wk.register({
   d = {
