@@ -8,7 +8,7 @@ return {
       require("luasnip_snippets.common.snip_utils").setup()
     end,
   },
-
+  { "echasnovski/mini.icons", version = false },
   { "saadparwaiz1/cmp_luasnip" },
 
   {

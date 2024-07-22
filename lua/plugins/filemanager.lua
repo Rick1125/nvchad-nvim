@@ -21,7 +21,7 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     config = require "configs.neotree",
   },
@@ -31,6 +31,7 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
+  ---@diagnostic disable-next-line: undefined-doc-name
   ---@type LazySpec
   {
     "mikavilpas/yazi.nvim",
@@ -56,6 +57,7 @@ local plugins = {
         desc = "Open the file manager in nvim's working directory",
       },
     },
+    ---@diagnostic disable-next-line: undefined-doc-name
     ---@type YaziConfig
     opts = {
       open_for_directories = false,

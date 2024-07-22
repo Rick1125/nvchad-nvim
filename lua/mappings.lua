@@ -34,67 +34,64 @@ map("n", "<leader><leader>f", "<cmd>HopChar1<CR>", { desc = "Hop to char1", nowa
 map("n", "<leader><leader>F", "<cmd>HopChar2<CR>", { desc = "Hop to char2", nowait = true })
 
 -- lspsaga
-wk.register({
-  s = {
-    name = "LspSaga",
-    a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
-    l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics" },
-    g = { "<cmd>Lspsaga goto_definition<cr>", "Goto Definition" },
-    D = { "<cmd>Lspsaga hover_doc<cr>", "Hover Document" },
-    d = { "<cmd>Lspsaga peek_definition<cr>", "Peek Definition" },
-    r = { "<cmd>Lspsaga rename<cr>", "Rename Variable" },
-    n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Diagnostic Jump Next" },
-    p = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Diagnostic Jump Prev" },
-  },
-}, { prefix = "<leader>" })
+wk.add {
+  { "<leader>s", group = "LspSaga" },
+  { "<leader>sD", "<cmd>Lspsaga hover_doc<cr>", desc = "Hover Document" },
+  { "<leader>sa", "<cmd>Lspsaga code_action<cr>", desc = "Code Action" },
+  { "<leader>sd", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek Definition" },
+  { "<leader>sg", "<cmd>Lspsaga goto_definition<cr>", desc = "Goto Definition" },
+  { "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Show Line Diagnostics" },
+  { "<leader>sn", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Diagnostic Jump Next" },
+  { "<leader>sp", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Diagnostic Jump Prev" },
+  { "<leader>sr", "<cmd>Lspsaga rename<cr>", desc = "Rename Variable" },
+}
 
 -- dap
-wk.register({
-  d = {
-    name = "DAP",
-    b = { "<cmd>DapToggleBreakpoint<CR>", "Toggle breakpoint at line" },
-    c = { "<cmd>DapContinue", "Continue" },
-    i = { "<cmd>DapStepInto<CR>", "Step into" },
-    o = { "<cmd>DapStepOver<CR>", "Step over" },
-    O = { "<cmd>DapStepOut<CR>", "Step out" },
-    S = { "<cmd>DapRunToCursor<CR>", "Run to cursor" },
-    t = { "<cmd>DapTerminate<CR>", "Terminate" },
-    u = { "<cmd>lua require'dapui'.toggle()<CR>", "Toggle UI" },
-    us = {
-      function()
-        local widgets = require "dap.ui.widgets"
-        local sidebar = widgets.sidebar(widgets.scopes)
-        sidebar.open()
-      end,
-      "Open sidebar",
-    },
-    gt = {
-      function()
-        require("dap-go").debug_test()
-      end,
-      "Debug test",
-    },
-    gl = {
-      function()
-        require("dap-go").debug_last()
-      end,
-      "Debug last go test",
-    },
+wk.add {
+  { "<leader>d", group = "DAP" },
+  { "<leader>dO", "<cmd>DapStepOut<CR>", desc = "Step out" },
+  { "<leader>dS", "<cmd>DapRunToCursor<CR>", desc = "Run to cursor" },
+  { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint at line" },
+  { "<leader>dc", "<cmd>DapContinue", desc = "Continue" },
+  {
+    "<leader>dgl",
+    function()
+      require("dap-go").debug_last()
+    end,
+    desc = "Debug last go test",
   },
-}, { prefix = "<leader>" })
+  {
+    "<leader>dgt",
+    function()
+      require("dap-go").debug_test()
+    end,
+    desc = "Debug test",
+  },
+  { "<leader>di", "<cmd>DapStepInto<CR>", desc = "Step into" },
+  { "<leader>do", "<cmd>DapStepOver<CR>", desc = "Step over" },
+  { "<leader>dt", "<cmd>DapTerminate<CR>", desc = "Terminate" },
+  { "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", desc = "Toggle UI" },
+  {
+    "<leader>dus",
+    function()
+      local widgets = require "dap.ui.widgets"
+      local sidebar = widgets.sidebar(widgets.scopes)
+      sidebar.open()
+    end,
+    desc = "Open sidebar",
+  },
+}
 
 -- ai
-wk.register({
-  c = {
-    name = "AI",
-    i = { "<cmd>ChatGPT<cr>", "ChatGPT" },
-    l = { "<cmd>ChatGPTActAs<cr>", "ChatGPT Act as" },
-    c = { "<cmd>ChatGPTRun optimize_code<cr>", "Optimize code" },
-    o = { "<cmd>ChatGPTRun translate<cr>", "Translate" },
-    t = { "<cmd>ChatGPTRun code_readability_analysis<cr>", "Code Readability Analysis" },
-    x = { "<cmd>ChatGPTRun explain_code<cr>", "Explain code" },
-  },
-}, { prefix = "<leader>" })
+wk.add {
+  { "<leader>c", group = "AI" },
+  { "<leader>cc", "<cmd>ChatGPTRun optimize_code<cr>", desc = "Optimize code" },
+  { "<leader>ci", "<cmd>ChatGPT<cr>", desc = "ChatGPT" },
+  { "<leader>cl", "<cmd>ChatGPTActAs<cr>", desc = "ChatGPT Act as" },
+  { "<leader>co", "<cmd>ChatGPTRun translate<cr>", desc = "Translate" },
+  { "<leader>ct", "<cmd>ChatGPTRun code_readability_analysis<cr>", desc = "Code Readability Analysis" },
+  { "<leader>cx", "<cmd>ChatGPTRun explain_code<cr>", desc = "Explain code" },
+}
 
 -- neorg
 -- map("n", "<leader>ng", "<cmd>Neorg<cr>", { desc = "Norg note", nowait = true })
